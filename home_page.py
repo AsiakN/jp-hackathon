@@ -58,7 +58,7 @@ def setup_data(file_name: str):
     st.markdown("## SYNTHETIC DATA")
     # modify = st.checkbox("Add filters")
 
-    # st.data_editor(df, num_rows='dynamic')
+    st.data_editor(df, num_rows='dynamic')
 
     setup_payment_portal()
 
