@@ -38,6 +38,8 @@ def run():
 
     st.session_state['customer_balance'] = 1000000
 
+    setup_payment_portal()
+
     setup_data(fin_data)
 
     # st.sidebar.success("Select a demo above.")
@@ -59,8 +61,6 @@ def setup_data(file_name: str):
     # modify = st.checkbox("Add filters")
 
     st.data_editor(df, num_rows='dynamic')
-
-    setup_payment_portal()
 
 
     st.download_button(
