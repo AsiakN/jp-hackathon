@@ -13,7 +13,7 @@ class OpenAIFraudDetection:
         self.url = 'https://api.openai.com/v1/chat/completions'
 
         # self.api_key = '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'
-        self.api_key = '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'
+        self.api_key = ''
         self.temperature = 0
 
         self.headers = {
