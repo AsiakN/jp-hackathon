@@ -12,7 +12,6 @@ class OpenAIFraudDetection:
         #OPENAI CONFIGS
         self.url = 'https://api.openai.com/v1/chat/completions'
 
-        # self.api_key = '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'
         self.api_key = ''
         self.temperature = 0
 
