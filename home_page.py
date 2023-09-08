@@ -18,8 +18,9 @@ import pandas as pd
 import os
 import secrets
 import string
+from llm import OpenAIFraudDetection
 
-
+llm = OpenAIFraudDetection()
 
 LOGGER = get_logger(__name__)
 main_directory = os.getcwd()
@@ -96,7 +97,7 @@ def setup_payment_portal():
         'rate':   transaction_rate,
         'transaction_type':  str.upper(transaction_type),
         'customer_code' :   gen_unique('C'), 
-        'Agent_code': gen_unique('M')
+        'recipient': gen_unique('C')
         }
         st.button(label="Make Transaction", on_click=handler_payment_process, disabled=st.session_state.test_disabled, args=[model_config_template])      
     
@@ -114,14 +115,18 @@ def handler_payment_process(transaction_details:dict):
         'newBalanceOrig': [584743.8585],
         'oldBalanceDest': [574833],
         'newBalanceDest': [57493743],
+        'nameDest': [transaction_details['recipient']],
         'isFraud': [0],
         'isFlaggedFraud': [0]
-    })
+    }) 
+
+    llm.make_api_call(transaction_details=transaction_details)
     
-    combined_df = pd.concat([new_df, df], ignore_index=True)
+
+    # combined_df = pd.concat([new_df, df], ignore_index=True)
     # new_combined_df = combined_df.style.apply(highlight_new_row, axis=1)
 
-    st.data_editor(combined_df)
+    # st.data_editor(combined_df)
 
     # Make api prediction
 
