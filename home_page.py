@@ -22,7 +22,7 @@ main_directory = os.getcwd()
 # target_directory = "archive"
 # work_directory = os.path.join(main_directory, target_directory)
 
-fin_data = os.path.join(main_directory, "fin_data.csv")
+fin_data = os.path.join(main_directory, "fin_data_x.csv")
 type_of_transactions = ['Select Transaction type','Payment', 'Cash-In', 'Cash-Out', 'Merchant']
 customer_balance = 1000000
 
@@ -87,7 +87,7 @@ def setup_payment_portal():
         transaction_rate = st.slider(label="rate", min_value=0.0, max_value=1.0, step=0.1, value=0.7, key='tranaction_rate', help="", disabled=st.session_state.test_disabled)
         transaction_type = st.selectbox(label='Type of Transaction', options=type_of_transactions)
         st.button(label="Make Transaction", on_click=handler_payment_process, disabled=st.session_state.test_disabled)      
-
+    
 def handler_payment_process():
     """Fetches model responses"""
     st.session_state.test_disabled = False 
